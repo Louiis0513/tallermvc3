@@ -1,0 +1,26 @@
+<?php
+require_once "../modelos/reporteModelo.php";
+
+
+class reporteControlador extends reporteModelo
+{
+
+    public function reporte_tabla1_controlador()
+    {
+        $SDATE = $_GET['start_date'];
+         $SSDATE = explode('-', $SDATE);
+       $START_DATE = $SSDATE[0]."/".$SSDATE[2]."/".$SSDATE[1];
+       $EDATE = $_GET['end_date'];
+      $EEDATE = explode('-', $EDATE);
+      $END_DATE = $EEDATE[0]."-".$EEDATE[2]."-".$EEDATE[1];
+       
+      $datos_reporte= [
+        "start_date" => $START_DATE,
+        "end_date" => $END_DATE
+    ];
+
+    $reporteee=reporteModelo::filtrar_reporte_modelo($datos_reporte);
+    
+
+    }
+}
